@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        fieldset {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-right: 30px;
+            background-color: #151313;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #f2f7f8;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="checkbox"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #67adf9;
+            color: #0e0d0d;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        input[type="reset"] {
+            background-color: #ccc;
+        }
+        .gender{
+                display: flex;
+                margin-right: 20px;
+                padding-right: 60px;
+        }
+        #reset{
+            background-color: rgb(149, 245, 23);
+            color: black;
+            font-size: 15px;
+            font-weight:700 ;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <fieldset>
+        <form action="submit" method="post">
+
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" required><br><br>
+    
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" required><br><br>
+    
+            <label for="DOB">Date of Birth</label>
+            <input type="date" id="DOB" name="DOB" required><br><br>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">Select a country</option>
+                <option value="australia">Australia</option>
+                <option value="argentina">Argentina</option>
+                <option value="japan">Japan</option>
+                <option value="canada">Canada</option>
+                <option value="china">China</option>
+                <option value="germany">Germany</option>
+                <option value="in">India</option>
+                <option value="uk">United Kingdom</option>
+                <option value="usa">United States</option>
+            </select><br><br><br>
+                <label for="Gender">Gender</label><br>
+            <div class="gender">
+                
+                <label for="male">Male</label>
+                <input type="checkbox" id="male" name="gender" value="male">
+
+                <label for="female">Female</label>
+                <input type="checkbox" id="female" name="gender" value="female">
+
+                <label for="other">Other</label>
+                <input type="checkbox" id="other" name="gender" value="other">
+            </div><br><br>
+
+
+            <label for="profession">Profession</label>
+            <input type="text" name="profession" id="profession" style="height: 30px;" required><br><br>
+
+            <label for="mail">Email</label>
+            <input type="email" id="mail" name="mail" required><br><br>
+
+            <label for="phno">Phone Number</label>
+            <input type="tel" id="phno" name="phno" required><br><br>
+
+            <div>
+                <!-- <label for="reset"></label> -->
+                <input type="reset" id="reset" name="reset">
+
+                <!-- <label for="submit"></label> -->
+                <input type="submit" id="submit" name="submit">
+            </div>
+
+        </form>
+    </fieldset>
+
+    <script>
+
+
+            let submit_button=document.getElementById("submit");
+
+            submit_button.addEventListener("click",()=>{
+                validateForm();
+            })
+        
+        function validateForm() {
+            // Get references to the form elements
+            const firstName = document.getElementById("firstname").value;
+            const lastName = document.getElementById("lastname").value;
+            const dob = document.getElementById("DOB").value;
+            const Country = document.getElementById("country").value;
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("mail").value;
+            const phno = document.getElementById("phno").value;
+
+            // Check if mandatory fields are filled
+            if(!firstName){
+                alert("please enter firstname");
+            }else if(!lastName){
+                alert("please enter lastname")
+            }
+            else if(!dob){
+                alert("date of borth is mandatory!");
+            }
+            else if(!Country){
+                alert("please select country");
+            }
+            else if(!profession){
+                alert("please enter profession");
+            }
+            else if(!email){
+                alert("Email is mandatory");
+            }
+            else if(!phno){
+                alert("please enter phone number");
+            }else{
+                return false;
+            }
+                return false; 
+
+
+            }
+        
+    </script>
+
+
+
+
+
+
+<button id="date_btn">click me to get date</button>
+<button id="time_btn">double click to get time</button>
+<p class="box">Change me</p>
+
+    <script>
+        let date_btn=document.getElementById("date_btn")
+        let time_btn=document.getElementById("time_btn")
+        let box=document.querySelector(".box")
+        date_btn.addEventListener("click", ()=>{
+            let date=new Date().toLocaleDateString()
+            alert(date)
+        })
+        time_btn.addEventListener("dblclick",()=>{
+            let time=new Date().toLocaleTimeString()
+            alert(time)
+        })
+        box.addEventListener("mouseover" ,()=>{
+            box.style.backgroundColor="skyblue"
+        }) 
+        box.addEventListener("mouseout" ,()=>{
+            box.style.backgroundColor="black"
+        })       
+    </script>
+</body>
+</html>
